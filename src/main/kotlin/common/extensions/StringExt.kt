@@ -17,4 +17,10 @@ fun String.grabInts(): List<Int> =
         .filter { it.isNotBlank()}
         .mapNotNull  { try { it.toInt() } catch (e: Exception){ null } }
 
+fun String.grabLongs(): List<Long> =
+    this.replace("[^-0-9]".toRegex(), " ")
+        .split(" ")
+        .filter { it.isNotBlank()}
+        .mapNotNull  { try { it.toLong() } catch (e: Exception){ null } }
+
 fun String.sortString() = this.toList().sorted().joinToString("")
